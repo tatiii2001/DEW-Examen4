@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     </style>
     <script src="temas.js" defer></script>
 </head>
+
 <body>
     <h1>Formulario de Suscripción</h1>
     <form method="post" action="suscribe.php">
@@ -19,7 +21,7 @@
             <legend>Datos personales</legend>
             <p>
                 <label for="nombre">Nombre: </label>
-                <input type="text" name="nombre" id="nombre" required>
+                <input type="text" name="nombre" id="nombre" required minlength="3">
                 <span class="error"></span>
             </p>
             <p>
@@ -38,7 +40,7 @@
             <input type="radio" name="tipo" id="premium" value="premium" required>
             <label for="premium">Premium</label>
             <input type="radio" name="tipo" id="elite" value="elite" required>
-            <label for="elite">Élite</label>            
+            <label for="elite">Élite</label>
         </fieldset>
         <fieldset>
             <legend>Temas</legend>
@@ -46,7 +48,7 @@
             <input type="checkbox" name="tema[]" id="Cocina" value="Cocina" required>
             <label for="Cocina">Cocina</label>
             <input type="checkbox" name="tema[]" id="Futbol" value="Futbol" required>
-            <label for="Futbol">Futbol</label>            
+            <label for="Futbol">Futbol</label>
         </fieldset>
         <p>
             <input type="reset" value="Borrar">
@@ -54,4 +56,5 @@
         </p>
     </form>
 </body>
+
 </html>
