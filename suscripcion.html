@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suscripción</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script src="temas.js" defer></script>
+</head>
+<body>
+    <h1>Formulario de Suscripción</h1>
+    <form method="post" action="suscribe.php">
+        <fieldset>
+            <legend>Datos personales</legend>
+            <p>
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" required>
+                <span class="error"></span>
+            </p>
+            <p>
+                <label for="dni">DNI: </label>
+                <input type="text" name="dni" id="dni" pattern="[0-9]{8}-[A-Z]" required>
+                <span class="error"></span>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Tipo de Suscripción</legend>
+            <span class="error"></span>
+            <input type="radio" name="tipo" id="basico" value="basico" checked required>
+            <label for="basico">Básico</label>
+            <input type="radio" name="tipo" id="estandar" value="estandar" required>
+            <label for="estandar">Estándar</label>
+            <input type="radio" name="tipo" id="premium" value="premium" required>
+            <label for="premium">Premium</label>
+            <input type="radio" name="tipo" id="elite" value="elite" required>
+            <label for="elite">Élite</label>            
+        </fieldset>
+        <fieldset>
+            <legend>Temas</legend>
+            <span class="error"></span>
+            <input type="checkbox" name="tema[]" id="Cocina" value="Cocina" required>
+            <label for="Cocina">Cocina</label>
+            <input type="checkbox" name="tema[]" id="Futbol" value="Futbol" required>
+            <label for="Futbol">Futbol</label>            
+        </fieldset>
+        <p>
+            <input type="reset" value="Borrar">
+            <input type="submit" value="Suscribir">
+        </p>
+    </form>
+</body>
+</html>
