@@ -22,11 +22,13 @@
             <p>
                 <label for="nombre">Nombre: </label>
                 <input type="text" name="nombre" id="nombre" required minlength="3">
+                <br>
                 <span class="error"></span>
             </p>
             <p>
                 <label for="dni">DNI: </label>
                 <input type="text" name="dni" id="dni" pattern="[0-9]{8}-[A-Z]" required>
+                <br>
                 <span class="error"></span>
             </p>
         </fieldset>
@@ -41,14 +43,13 @@
             <label for="premium">Premium</label>
             <input type="radio" name="tipo" id="elite" value="elite" required>
             <label for="elite">Élite</label>
+            <p>
+                Precio: <span id="precio">10</span> € 
+            </p>
         </fieldset>
         <fieldset>
             <legend>Temas</legend>
             <span class="error"></span>
-            <input type="checkbox" name="tema[]" id="Cocina" value="Cocina" required>
-            <label for="Cocina">Cocina</label>
-            <input type="checkbox" name="tema[]" id="Futbol" value="Futbol" required>
-            <label for="Futbol">Futbol</label>
         </fieldset>
         <p>
             <input type="reset" value="Borrar">
