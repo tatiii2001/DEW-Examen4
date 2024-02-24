@@ -15,30 +15,37 @@ let suscriptions = [...document.getElementsByName('tipo')];
 var temas = document.querySelectorAll('fieldset');
 let maxTemas = 1;
 
-//Validacion del nombre
 inputName.addEventListener("blur", function(event){
-
-  if(inputName.validity.tooShort){
-    spanError[0].textContent = 'Se espera una palabra mayor a 3 letras';
-  }else{
-    let text = inputName.value.toUpperCase();
-    inputName.value = text;
-    spanError[0].textContent = '';
-  }
+  let text = inputName.value.toUpperCase();
+  inputName.value = text;
 });
 
-//Validacion de DNI
-inputDni.addEventListener("blur", function(event) {
-  if(!inputDni.validity.patternMistach){
-    spanError[1].textContent = 'El patrón del DNI tiene que ser el siguiente XXXXXXXX-X';
+document.getElementsByTagName('form')[0].addEventListener('submit', (e) =>{
+  e.preventDefault();
+  if(inputName.value.length < 3){
+    spanError[0].textContent = 'Se espera una palabra mayor a 3 letras';
+    return;
   }
-})
+
+    let seleccionados = [...document.querySelectorAll('input[name="tema"]:checked')];
+    if(seleccionados.length > maxTemas){
+      if(spanError[spanError.length-1].textContent == 0){
+        spanError[spanError.length-1].textContent = 'Solo puede seleccionar '+maxTemas+' temas para la suscripción';
+        return;
+      }
+    }else{
+      spanError[spanError.length-1].textContent = '';
+    }
+  
+
+});
+
+
 
 //Validacion de las suscripciones
 suscriptions.forEach((suscription) =>{
   suscription.addEventListener("click", limiteTemas);
   suscription.addEventListener("change", validateSuscription);
-  suscription.addEventListener("change", validateTemas);
 });
 
 function validateSuscription(event){
@@ -58,8 +65,6 @@ TEMAS.forEach((tema) =>{
   input.setAttribute("name", "tema");
   input.setAttribute("id", tema);
   input.setAttribute("value", tema);
-
- input.addEventListener("change", validateTemas);
 
   let label = document.createElement('label');
   label.setAttribute("for", tema);
@@ -89,16 +94,5 @@ function limiteTemas(event){
       break;
     default:
       maxTemas = 1;
-  }
-}
-
-function validateTemas(event){
-  let seleccionados = [...document.querySelectorAll('input[name="tema"]:checked')];
-  if(seleccionados.length > maxTemas){
-   if(spanError[spanError.length-1].textContent == 0){
-    spanError[spanError.length-1].textContent = 'Solo puede seleccionar '+maxTemas+' temas para la suscripción';
-   }
-  }else{
-    spanError[spanError.length-1].textContent = '';
   }
 }
